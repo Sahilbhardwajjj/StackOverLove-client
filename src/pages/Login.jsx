@@ -3,9 +3,12 @@ import Bgcolor from "../components/Bgcolor";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     email: "demo1@gmail.com",
@@ -35,7 +38,7 @@ const Login = () => {
           withCredentials: true,
         },
       );
-      console.log(res?.data?.data);
+      dispatch(addUser(res.data.data));
       return navigate("/dash");
     } catch (err) {
       console.error("Error message:", err.message);

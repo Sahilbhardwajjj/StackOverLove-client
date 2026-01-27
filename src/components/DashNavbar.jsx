@@ -3,9 +3,13 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../store/userSlice";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const links = [
     { name: "Feed", to: "/dash" },
     { name: "Profile", to: "/dash/profile" },
@@ -22,9 +26,8 @@ export default function Navbar() {
           withCredentials: true,
         },
       );
-
-      navigate("/login");
-      return res;
+      dispatch(removeUser());
+      return navigate("/login");
     } catch (err) {
       console.log("Error : " + err.message);
     }

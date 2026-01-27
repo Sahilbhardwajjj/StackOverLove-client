@@ -9,7 +9,7 @@ import Requests from "./pages/Requests";
 import Dash from "./pages/Dash";
 import Sections from "./pages/Sections";
 import { Provider } from "react-redux";
-import appStore from "./store/AppStore";
+import appStore from "./store/appStore";
 
 export default function App() {
   return (
@@ -30,7 +30,7 @@ export default function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </Provi>
+      </Provider>
     </>
   );
 }
