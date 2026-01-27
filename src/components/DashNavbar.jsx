@@ -42,7 +42,7 @@ export default function Navbar() {
         viewport={{ once: true }}
         transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
       >
-        <a href="/">
+        <Link to={"/dash"}>
           <img
             src="/assets/logo.png"
             alt="logo"
@@ -50,7 +50,7 @@ export default function Navbar() {
             width={205}
             height={48}
           />
-        </a>
+        </Link>
 
         <div className="hidden items-center space-x-10 md:flex">
           {links.map((link) => (

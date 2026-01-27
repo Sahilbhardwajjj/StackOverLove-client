@@ -23,7 +23,7 @@ export default function App() {
               <Route path="/signup" element={<Signup />}></Route>
             </Route>
             <Route path="/dash" element={<Dash />}>
-              <Route index element={<Feed />}></Route>
+              <Route path="/dash" element={<Feed />}></Route>
               <Route path="profile" element={<Profile />}></Route>
               <Route path="connections" element={<Connections />}></Route>
               <Route path="requests" element={<Requests />}></Route>
