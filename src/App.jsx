@@ -23,10 +23,10 @@ export default function App() {
               <Route path="/signup" element={<Signup />}></Route>
             </Route>
             <Route path="/dash" element={<Dash />}>
-              <Route path="/dash" element={<Feed />}></Route>
-              <Route path="/dash/profile" element={<Profile />}></Route>
-              <Route path="/dash/connections" element={<Connections />}></Route>
-              <Route path="/dash/requests" element={<Requests />}></Route>
+              <Route index element={<Feed />}></Route>
+              <Route path="profile" element={<Profile />}></Route>
+              <Route path="connections" element={<Connections />}></Route>
+              <Route path="requests" element={<Requests />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
