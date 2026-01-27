@@ -1,5 +1,5 @@
 import LenisScroll from "../components/lenis-scroll";
-import Navbar from "../components/navbar";
+import DashNavbar from "../components/DashNavbar";
 import Footer from "../components/footer";
 import Bgcolor from "../components/Bgcolor";
 import { Outlet } from "react-router-dom";
@@ -8,7 +8,7 @@ const Dash = () => {
   return (
     <div>
       <LenisScroll />
-      <Navbar />
+      <DashNavbar />
       <Bgcolor />
       <div>
         <Outlet />

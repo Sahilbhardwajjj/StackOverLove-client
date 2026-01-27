@@ -1,21 +1,45 @@
 import React, { useState } from "react";
 import Bgcolor from "../components/Bgcolor";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "demo1@gmail.com",
+    password: "Demo@123",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Logging in with:", formData);
+    handleLogin();
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleLogin = async () => {
+    try {
+      const res = await axios.post(
+        BASE_URL + "login",
+        {
+          email: formData.email,
+          password: formData.password,
+        },
+        {
+          withCredentials: true,
+        },
+      );
+      console.log(res?.data?.data);
+      return navigate("/dash");
+    } catch (err) {
+      console.error("Error message:", err.message);
+    }
   };
 
   return (
