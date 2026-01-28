@@ -23,7 +23,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        import.meta.env.BASE_URL + "signup",
+        import.meta.env.VITE_API_URL + "signup",
         {
           username: formData.username,
           firstName: formData.firstName,

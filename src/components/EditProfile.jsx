@@ -34,7 +34,7 @@ const EditProfile = ({ user }) => {
 
     try {
       const res = await axios.post(
-        import.meta.env.BASE_URL + "profile/edit",
+        import.meta.env.VITE_API_URL + "profile/edit",
         formData,
         {
           withCredentials: true,

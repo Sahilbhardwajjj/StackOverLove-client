@@ -14,12 +14,9 @@ const Feed = () => {
 
   const getFeed = useCallback(async () => {
     try {
-      const res = await axios.get(
-        import.meta.env.BASE_URL + "user/feed",
-        {
-          withCredentials: true,
-        },
-      );
+      const res = await axios.get(import.meta.env.VITE_API_URL + "user/feed", {
+        withCredentials: true,
+      });
       dispatch(addFeed(res?.data));
     } catch (err) {
       console.error("Feed Error:", err.message);

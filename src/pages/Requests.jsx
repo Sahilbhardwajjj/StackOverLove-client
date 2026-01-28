@@ -13,7 +13,7 @@ const Requests = () => {
   const fetchRequests = useCallback(async () => {
     try {
       const res = await axios.get(
-        import.meta.env.BASE_URL + "user/requests",
+        import.meta.env.VITE_API_URL + "user/requests",
         {
           withCredentials: true,
         },

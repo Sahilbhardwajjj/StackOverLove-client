@@ -16,7 +16,11 @@ const RequestCard = ({ request }) => {
     setIsLoading(true);
     try {
       await axios.post(
-        import.meta.env.BASE_URL + "request/review/" + status + "/" + request._id,
+        import.meta.env.VITE_API_URL +
+          "request/review/" +
+          status +
+          "/" +
+          request._id,
         {},
         { withCredentials: true },
       );

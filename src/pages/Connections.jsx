@@ -13,7 +13,7 @@ const Connections = () => {
   const fetchConnections = useCallback(async () => {
     try {
       const res = await axios.get(
-        import.meta.env.BASE_URL + "user/connections",
+        import.meta.env.VITE_API_URL + "user/connections",
         {
           withCredentials: true,
         },
