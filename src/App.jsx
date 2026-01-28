@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -15,21 +15,21 @@ export default function App() {
   return (
     <>
       <Provider store={appStore}>
-        <BrowserRouter basename="/">
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Home />}>
-              <Route path="/" element={<Sections />}></Route>
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="/signup" element={<Signup />}></Route>
+              <Route index element={<Sections />}></Route>
+              <Route path="login" element={<Login />}></Route>
+              <Route path="signup" element={<Signup />}></Route>
             </Route>
             <Route path="/dash" element={<Dash />}>
-              <Route path="/dash" element={<Feed />}></Route>
+              <Route index element={<Feed />}></Route>
               <Route path="profile" element={<Profile />}></Route>
               <Route path="connections" element={<Connections />}></Route>
               <Route path="requests" element={<Requests />}></Route>
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     </>
   );
