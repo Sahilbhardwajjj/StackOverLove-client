@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Bgcolor from "../components/Bgcolor";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL } from "../utils/constants";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        BASE_URL + "signup",
+        import.meta.env.BASE_URL + "signup",
         {
           username: formData.username,
           firstName: formData.firstName,

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { BASE_URL, DEFAULT_PHOTO_URL } from "../utils/constants";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeRequests } from "../store/requestSlice";
@@ -17,7 +16,7 @@ const RequestCard = ({ request }) => {
     setIsLoading(true);
     try {
       await axios.post(
-        BASE_URL + "request/review/" + status + "/" + request._id,
+        import.meta.env.BASE_URL + "request/review/" + status + "/" + request._id,
         {},
         { withCredentials: true },
       );
@@ -34,7 +33,11 @@ const RequestCard = ({ request }) => {
       {/* Image Section */}
       <div className="relative h-80 w-full bg-black overflow-hidden">
         <img
-          src={photoUrl || DEFAULT_PHOTO_URL}
+          src={
+            photoUrl ||
+            import.meta.env.DEFAULT_PHOTO_URL ||
+            "https://i.pinimg.com/736x/7d/93/ab/7d93ab87452ba3d71249c024747a4d56.jpg"
+          }
           alt={`${firstName}'s profile`}
           className="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
         />

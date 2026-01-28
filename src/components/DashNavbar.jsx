@@ -2,7 +2,6 @@ import { MenuIcon, XIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../store/userSlice";
 
@@ -20,7 +19,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     try {
       const res = await axios.post(
-        BASE_URL + "logout",
+        import.meta.env.BASE_URL + "logout",
         {},
         {
           withCredentials: true,

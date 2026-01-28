@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../utils/constants";
+
 import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequests } from "../store/requestSlice";
@@ -12,9 +12,12 @@ const Requests = () => {
 
   const fetchRequests = useCallback(async () => {
     try {
-      const res = await axios.get(BASE_URL + "user/requests", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        import.meta.env.BASE_URL + "user/requests",
+        {
+          withCredentials: true,
+        },
+      );
       dispatch(addRequests(res?.data?.data));
     } catch (err) {
       console.error("Requests Error:", err.message);

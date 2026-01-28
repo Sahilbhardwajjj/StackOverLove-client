@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import { BASE_URL } from "../utils/constants";
+
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../store/connectionSlice";
@@ -12,9 +12,12 @@ const Connections = () => {
 
   const fetchConnections = useCallback(async () => {
     try {
-      const res = await axios.get(BASE_URL + "user/connections", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        import.meta.env.BASE_URL + "user/connections",
+        {
+          withCredentials: true,
+        },
+      );
       dispatch(addConnections(res?.data?.data));
     } catch (err) {
       console.error("Connections Error:", err.message);

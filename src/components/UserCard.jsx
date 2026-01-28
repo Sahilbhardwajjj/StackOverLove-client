@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useRef } from "react";
-import { BASE_URL, DEFAULT_PHOTO_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../store/feedSlice";
 
@@ -105,7 +104,7 @@ const UserCard = ({ user }) => {
   const handleSend = async (status, userId) => {
     try {
       await axios.post(
-        BASE_URL + "request/send/" + status + "/" + userId,
+        import.meta.env.BASE_URL + "request/send/" + status + "/" + userId,
         {},
         { withCredentials: true },
       );
@@ -153,7 +152,11 @@ const UserCard = ({ user }) => {
           {/* Image Section */}
           <div className="relative h-[520px] w-full bg-black">
             <img
-              src={photoUrl || DEFAULT_PHOTO_URL}
+              src={
+                photoUrl ||
+                import.meta.env.DEFAULT_PHOTO_URL ||
+                "https://i.pinimg.com/736x/7d/93/ab/7d93ab87452ba3d71249c024747a4d56.jpg"
+              }
               alt={`${firstName}'s profile`}
               className="h-full w-full object-cover object-top"
               draggable="false"

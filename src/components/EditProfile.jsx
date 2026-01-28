@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { BASE_URL } from "../utils/constants";
+
 import { addUser } from "../store/userSlice";
 import UserCard from "./UserCard";
 
@@ -33,9 +33,13 @@ const EditProfile = ({ user }) => {
     setLoading(true);
 
     try {
-      const res = await axios.post(BASE_URL + "profile/edit", formData, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        import.meta.env.BASE_URL + "profile/edit",
+        formData,
+        {
+          withCredentials: true,
+        },
+      );
       dispatch(addUser(res?.data?.data));
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);

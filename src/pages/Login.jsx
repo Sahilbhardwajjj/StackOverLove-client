@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Bgcolor from "../components/Bgcolor";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL } from "../utils/constants";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/userSlice";
 
@@ -29,7 +29,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        BASE_URL + "login",
+        import.meta.env.BASE_URL + "login",
         {
           email: formData.email,
           password: formData.password,

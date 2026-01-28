@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useCallback } from "react";
-import { BASE_URL } from "../utils/constants";
+
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../store/feedSlice";
 import UserCard from "../components/UserCard";
@@ -14,9 +14,12 @@ const Feed = () => {
 
   const getFeed = useCallback(async () => {
     try {
-      const res = await axios.get(BASE_URL + "user/feed", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        import.meta.env.BASE_URL + "user/feed",
+        {
+          withCredentials: true,
+        },
+      );
       dispatch(addFeed(res?.data));
     } catch (err) {
       console.error("Feed Error:", err.message);
