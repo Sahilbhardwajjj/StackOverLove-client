@@ -11,12 +11,15 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    email: "demo1@gmail.com",
-    password: "Demo@123",
+    email: "",
+    password: "",
   });
+
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
     handleLogin();
   };
 
@@ -40,7 +43,8 @@ const Login = () => {
       dispatch(addUser(res.data.data));
       return navigate("/dash");
     } catch (err) {
-      console.error("Error message:", err.message);
+      console.error("Error message:", err.response?.data || err.message);
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
@@ -58,7 +62,13 @@ const Login = () => {
             Please sign in to continue
           </p>
 
-          <div className="flex items-center w-full mt-10 bg-black/50 border border-blue-500/30 h-12 rounded-full overflow-hidden pl-6 gap-2 hover:border-blue-500/50 transition">
+          {error && (
+            <div className="mt-4 p-3 text-sm text-red-400 bg-red-900/20 border border-red-500/50 rounded-xl">
+              ⚠️ {error}
+            </div>
+          )}
+
+          <div className="flex items-center w-full mt-6 bg-black/50 border border-blue-500/30 h-12 rounded-full overflow-hidden pl-6 gap-2 hover:border-blue-500/50 transition">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"
