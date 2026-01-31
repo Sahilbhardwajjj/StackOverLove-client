@@ -11,8 +11,8 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "ishani2@gmail.com",
+    password: "Demo@123",
   });
 
   const [error, setError] = useState("");
