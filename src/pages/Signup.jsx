@@ -30,8 +30,15 @@ const Signup = () => {
       );
       navigate("/login");
     } catch (err) {
-      console.error("Signup error:", err.response?.data || err.message);
-      setError(err.response?.data?.message || "Signup failed");
+      console.error("Signup error:", err.response?.data);
+      // Backend sends: { message: "Something went wrong", Error: err.message }
+      const errorMsg =
+        err.response?.data?.Error ||
+        err.response?.data?.message ||
+        err.response?.data ||
+        err.message ||
+        "Something went wrong";
+      setError(errorMsg);
     }
   };
 
