@@ -42,8 +42,8 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <Link to="/signup" className="btn glass">
-            Sign Up
+          <Link to="/login" className="btn glass">
+            Get Started
           </Link>
         </div>
 
