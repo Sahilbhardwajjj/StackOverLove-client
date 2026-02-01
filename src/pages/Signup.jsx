@@ -160,7 +160,7 @@ const Signup = () => {
 
           {error && (
             <div className="mt-4 p-3 text-sm text-red-400 bg-red-900/20 border border-red-500/50 rounded-xl">
-              ⚠️ {error}
+              ⚠️ {error.message}
             </div>
           )}
 
